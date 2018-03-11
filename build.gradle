@@ -1,0 +1,67 @@
+plugins {
+  id 'application'
+  id 'com.github.johnrengelman.shadow' version '2.0.2'
+}
+
+repositories {
+  jcenter()
+}
+
+version = '0.1.0'
+sourceCompatibility = '1.8'
+mainClassName = 'io.vertx.core.Launcher'
+
+def vertxVersion = '3.5.1'
+def mainVerticleName = 'MyJavaScriptVerticle.js'
+def watchForChange = 'src/**/*'
+def doOnChange = './gradlew classes'
+
+def vertxConfigFile = 'config.json'
+
+dependencies {
+  compile "io.vertx:vertx-core:$vertxVersion"
+  compile "io.vertx:vertx-lang-js:$vertxVersion"
+  compile "io.vertx:vertx-hazelcast:$vertxVersion"
+  compile "io.vertx:vertx-config:$vertxVersion"
+  testCompile "junit:junit:4.12"
+  testCompile "io.vertx:vertx-unit:$vertxVersion"
+}
+
+processResources {
+  from 'src/main/js'
+}
+
+shadowJar {
+  classifier = 'fat'
+  manifest {
+      attributes "Main-Verticle": mainVerticleName
+  }
+  mergeServiceFiles {
+    include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+  }
+}
+
+run {
+  args = ['run', mainVerticleName,
+              "--redeploy=$watchForChange",
+              "--launcher-class=$mainClassName",
+              "--on-redeploy=$doOnChange",
+              "-conf $vertxConfigFile"
+          ]
+}
+
+task run_Cluster(type: JavaExec) {
+  classpath sourceSets.main.runtimeClasspath
+  main = mainClassName
+  args = ['run', mainVerticleName,
+              "--redeploy=$watchForChange",
+              "--launcher-class=$mainClassName",
+              "--on-redeploy=$doOnChange",
+              "-conf $vertxConfigFile",
+              "-cluster"
+          ]
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '4.6.0'
+}
