@@ -35,9 +35,14 @@ function startHttpServer() {
 }
 
 function deployRubyVerticle() {
+
+  var classloader = java.lang.Thread.currentThread().getContextClassLoader();
+  var bundleFolderResource = classloader.getResource('ruby_gems')
+  console.log('ruby_gems absolute path: ' + bundleFolderResource.getPath())
+
   var rubyOptions = {
     "config": {
-      "GEM_PATH": "bundle/jruby/2.3.0/"
+      "GEM_PATH": bundleFolderResource.getPath() + "/vendor/bundle/jruby/2.3.0/"
     },
     "worker" : true
   }

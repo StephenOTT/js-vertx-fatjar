@@ -1,4 +1,5 @@
 plugins {
+  id 'java'
   id 'application'
   id 'com.github.johnrengelman.shadow' version '2.0.2'
   id "com.moowork.node" version "1.2.0" //https://github.com/srs/gradle-node-plugin
@@ -37,7 +38,7 @@ dependencies {
 processResources {
   from 'app'
   from ('node_modules') {into 'node_modules'}
-  from ('build/ruby_gems') {into 'bundle'}
+  from ('build/ruby_gems') {into 'ruby_gems'}
   // from ('build/node_modules') {into 'node_modules'}
 }
 
@@ -99,5 +100,5 @@ task wrapper(type: Wrapper) {
 task bundleInstall(type: JRubyExec) {
     workingDir file('./') //Path to gemfile
     script 'bundle'
-    scriptArgs 'install', "--path=${project.projectDir}/build/ruby_gems"
+    scriptArgs 'install', "--path=${project.projectDir}/build/ruby_gems/vendor/bundle"
 }

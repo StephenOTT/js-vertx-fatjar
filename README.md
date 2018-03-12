@@ -43,3 +43,10 @@ The above will create a `node_modules` folder in the build's root (inside of the
 1. Logging Levels for JUL: https://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html
 
 1. Add gradle dep for jRuby Bundler and then use task to run a Bundler install command.
+
+1. Getting the current ClassLoader: https://github.com/vert-x3/vertx-lang-js/commit/d4323889e71b21e35a873a73fb939eba53c2d0de#diff-a5533d7f2941dd2c95a4d7a28f1106afR294
+https://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html#getResource(java.lang.String)
+
+1. Active issue for simplify the GEM_PATH lookup: https://github.com/vert-x3/vertx-lang-js/issues/73
+
+1. Does the use of the GEM_PATH using the absolute path classloader feature make the usage of static cached files not relevant? Do NPM files get cached?  What are the pros and cons?
