@@ -22,5 +22,9 @@ gradle-app.setting
 .vscode/
 .classpath
 .project
+
 node_modules
+
+.bundle
+gemfile.lock
 

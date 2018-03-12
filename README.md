@@ -5,6 +5,8 @@ A boilerplate project for Vert.x using Javascript and gradle to generate fatjars
 
 1. Add NPM Dependencies: `./gradle npmInstall`
 
+1. Add RubyGem Dependencies: `./gradle bundleInstall`
+
 1. Run the app: `./gradlew run`
 
 1. Build FatJar: `./gradlew shadowJar` which will build the fatJar in `./build/libs/js-vertx-fatjar-0.1.0-fat.jar`
@@ -40,4 +42,4 @@ The above will create a `node_modules` folder in the build's root (inside of the
 
 1. Logging Levels for JUL: https://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html
 
-
+1. Add gradle dep for jRuby Bundler and then use task to run a Bundler install command.

@@ -20,6 +20,7 @@ if (_.isEmpty(cfg)){
 
   deployVerticles()
   startHttpServer()
+  deployRubyVerticle()
 }
 
 function deployVerticles() {
@@ -31,4 +32,14 @@ function startHttpServer() {
   vertx.createHttpServer().requestHandler(function (req) {
       req.response().putHeader("content-type", "text/html").end("<html><body><h1>Hello from vert.x1!</h1></body></html>");
   }).listen(8080)
+}
+
+function deployRubyVerticle() {
+  var rubyOptions = {
+    "config": {
+      "GEM_PATH": "bundle/jruby/2.3.0/"
+    },
+    "worker" : true
+  }
+  vertx.deployVerticle('verticles/ruby-working-hours/working-hours-vert.rb', rubyOptions)
 }
