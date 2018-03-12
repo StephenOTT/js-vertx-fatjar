@@ -11,8 +11,9 @@ A boilerplate project for Vert.x using Javascript and gradle to generate fatjars
 
 1. Build FatJar: `./gradlew shadowJar` which will build the fatJar in `./build/libs/js-vertx-fatjar-0.1.0-fat.jar`
 
-1. You can run the FatJar in a Java 8+ environment by running: `java -jar /path/to/js-vertx-fatjar-0.1.0-fat.jar -conf path/to/vertx-config.json.
-Note that a config.json value is required.  If the file is a empty object (such as `{}`) or is omitted, the Vertx instance will be stopped.
+1. You can run the FatJar in a Java 8+ environment by running: `java -jar /path/to/js-vertx-fatjar-0.1.0-fat.jar -conf path/to/vertx-config.json`.
+
+    Note that a config.json value is required.  If the file is a empty object (such as `{}`) or is omitted, the Vertx instance will be stopped.
 
 # Goals
 
