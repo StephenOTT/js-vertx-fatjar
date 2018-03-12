@@ -3,13 +3,16 @@ A boilerplate project for Vert.x using Javascript and gradle to generate fatjars
 
 # Quickstart
 
-1. Add NPM Dependencies: `./gradle npmInstall`
+1. Add NPM Dependencies: `./gradle npmInstall` (reads from [package.json](./package.json))
 
-1. Add RubyGem Dependencies: `./gradle bundleInstall`
+1. Add RubyGem Dependencies: `./gradle bundleInstall` (reads from [Gemfile](./Gemfile))
 
-1. Run the app: `./gradlew run`
+1. Run the app: `./gradlew run`.  Once you are done working within gradle, you can build the FatJar.  The Run task uses the [vertx-config.json](./vertx-config.json) as the entry verticle's (MyJavaScriptVerticle.js) config file.
 
 1. Build FatJar: `./gradlew shadowJar` which will build the fatJar in `./build/libs/js-vertx-fatjar-0.1.0-fat.jar`
+
+1. You can run the FatJar in a Java 8+ environment by running: `java -jar /path/to/js-vertx-fatjar-0.1.0-fat.jar -conf path/to/vertx-config.json.
+Note that a config.json value is required.  If the file is a empty object (such as `{}`) or is omitted, the Vertx instance will be stopped.
 
 # Goals
 
