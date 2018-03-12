@@ -37,7 +37,7 @@ Starting 2 Verticle
 
 You might also see warnings with messages such as:
 
-```
+```console
 Thread Thread[vert.x-eventloop-thread-1,5,main] has been blocked for 3529 ms, time limit is 2000
 Thread Thread[vert.x-eventloop-thread-1,5,main] has been blocked for 4533 ms, time limit is 2000
 Thread Thread[vert.x-eventloop-thread-1,5,main] has been blocked for 5536 ms, time limit is 2000
