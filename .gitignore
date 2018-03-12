@@ -22,5 +22,5 @@ gradle-app.setting
 .vscode/
 .classpath
 .project
+node_modules
 
-node_modules/

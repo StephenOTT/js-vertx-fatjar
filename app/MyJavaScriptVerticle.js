@@ -23,8 +23,8 @@ if (_.isEmpty(cfg)){
 }
 
 function deployVerticles() {
-  vertx.deployVerticle('verticles/MyJavaScriptVerticle2.js')
-  vertx.deployVerticle('verticles/MyJavaScriptVerticle3.js')
+  vertx.deployVerticle('verticles/vert2/MyJavaScriptVerticle2.js')
+  vertx.deployVerticle('verticles/vert3/MyJavaScriptVerticle3.js')
 }
 
 function startHttpServer() {
