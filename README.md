@@ -1,6 +1,19 @@
 # js-vertx-fatjar
 A boilerplate project for Vert.x using Javascript and gradle to generate fatjars
 
+## What does this thing do?!
+
+This is a Vertx.io boilerplate project that uses Gradle as a build system to run Vertx instances for development, and create FatJar executables for production use.  The repo includes a Dockerfile showing how to deploy the FatJar in a Docker environment.
+
+Why does this matter?  Well, because it is a Javascript Vertx verticles deployment.  Meaning that you dont have to write Java. You can use your JavaScript knowledge and take full advanage of Vertx and the "extras" and Java provides.  It also includes a Ruby verticle for showing how to leverage the Vertx Polyglot capabilities.
+
+Anything else?  Yes... Because we are using the [gradle](https://gradle.org) build system we also the get to leverage NPM, Yarn, Gulp, and Bower for JS dependencies.  Currently NPM is setup and you can control the dependencies with the package.json file, just like a regular Node project.  The Ruby dependencies are downloaded with the Bundler gem and RubyGems.  You can update the Gemfile file with the dependencies for Ruby verticles.
+
+This gives us a really powerful build system, multi-language dependency mamagement system, and deployment system, wrapped in a relatively simple setup.  We get JS/NPM + Ruby/RubyGems + Java/Maven all wrapped in a nice to use package, and we can package our build into a single FatJar.
+
+Check out the `app` folder and the `app/MyJavaScriptVerticle.js` entry verticle, and... Get Started Right Now!!
+
+
 # Quickstart
 
 1. Add NPM Dependencies: `./gradle npmInstall` (reads from [package.json](./package.json))
