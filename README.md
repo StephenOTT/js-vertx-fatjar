@@ -1,6 +1,11 @@
 # js-vertx-fatjar
 A boilerplate project for Vert.x using Javascript and gradle to generate fatjars
 
+# Quickstart
+
+Run the app: `./gradlew run`
+
+Build FatJar: `./gradlew shadowJar` which will build the fatJar in `./build/libs/js-vertx-fatjar-0.1.0-fat.jar`
 
 # Goals
 
