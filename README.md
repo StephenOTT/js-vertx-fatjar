@@ -74,6 +74,80 @@ The above will create a `node_modules` folder in the build's root (inside of the
 - [ ] Add npmInstall and Update tasks into Run and Build tasks
 
 
+# Dockerfile usage
+
+Inlcuded in this project is a dockerfile that can be used to build an image with the FatJar.
+
+The dockerfile depends on the `./build/lib/js-vertx-fatjar-0.1.0-fat.jar` and `./vertx-config.json` files.
+
+Once you have the FatJar generated, you can run the following from the root of the project:
+
+1. `docker build -t fatjar/js-vertx`
+    which will result in the following:
+    ```console
+    Sending build context to Docker daemon  64.01MB
+    Step 1/12 : FROM java:8-jre
+    ---> e44d62cf8862
+    Step 2/12 : ENV VERTICLE_FILE js-vertx-fatjar-0.1.0-fat.jar
+    ---> Using cache
+    ---> 9a290df84557
+    Step 3/12 : ENV CONFIG_JSON_FILE vertx-config.json
+    ---> Using cache
+    ---> 713eefc4a516
+    Step 4/12 : ENV VERTICLE_HOME /usr/verticles
+    ---> Using cache
+    ---> 559a89eb1858
+    Step 5/12 : EXPOSE 8080
+    ---> Using cache
+    ---> d5f72273653d
+    Step 6/12 : EXPOSE 8081
+    ---> Running in 38a8cbe565e1
+    Removing intermediate container 38a8cbe565e1
+    ---> e3767329bfb6
+    Step 7/12 : EXPOSE 8086
+    ---> Running in 23bdc14cf854
+    Removing intermediate container 23bdc14cf854
+    ---> 386c166d44c6
+    Step 8/12 : COPY build/libs/$VERTICLE_FILE $VERTICLE_HOME/
+    ---> 2b6e1847dd65
+    Step 9/12 : COPY $CONFIG_JSON_FILE $VERTICLE_HOME/
+    ---> 515b29356808
+    Step 10/12 : WORKDIR $VERTICLE_HOME
+    Removing intermediate container 8c216df18942
+    ---> 5cf7ff914391
+    Step 11/12 : ENTRYPOINT ["sh", "-c"]
+    ---> Running in 042e70e58e06
+    Removing intermediate container 042e70e58e06
+    ---> ed865eba45b8
+    Step 12/12 : CMD ["exec java -jar $VERTICLE_FILE -conf $CONFIG_JSON_FILE"]
+    ---> Running in 7a227e7bcb5e
+    Removing intermediate container 7a227e7bcb5e
+    ---> 9d476cdb9ddf
+    Successfully built 9d476cdb9ddf
+    Successfully tagged fatjar/js-vertx:latest
+    ``` 
+2. `docker run fatjar/js-vertx`
+    which will result in the following:
+    ```console
+    config.json contents:
+    {"mykey":"myvalue"}
+    ruby_gems absolute path: file:/usr/verticles/js-vertx-fatjar-0.1.0-fat.jar!/ruby_gems
+    Starting primary verticle
+    Succeeded in deploying verticle
+    true
+    Starting 2 Verticle
+    Starting 3 Verticle
+    2018-03-13 17:04:58 -0400
+    2018-03-13 11:00:00 -0400
+    2018-03-13 09:15:00 -0400
+    ```
+
+You can also go to:
+
+1. `localhost:8080`
+1. `localhost:8081`
+1. `localhost:8086`
+
 # Notes:
 
 1. Logging Levels for JUL: https://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html
