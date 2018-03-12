@@ -82,7 +82,7 @@ The dockerfile depends on the `./build/lib/js-vertx-fatjar-0.1.0-fat.jar` and `.
 
 Once you have the FatJar generated, you can run the following from the root of the project:
 
-1. `docker build -t fatjar/js-vertx`
+1. `docker build -t fatjar/js-vertx .`
     which will result in the following:
     ```console
     Sending build context to Docker daemon  64.01MB
