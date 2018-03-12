@@ -144,9 +144,9 @@ Once you have the FatJar generated, you can run the following from the root of t
 
 You can also go to:
 
-1. `localhost:8080`
-1. `localhost:8081`
-1. `localhost:8086`
+1. `localhost:8080` (being served by `./MyJavaScriptVerticle.js`)
+1. `localhost:8081` (being served by `./app/verticles/vert2/MyJavaScriptVerticle2.js`)
+1. `localhost:8086` (being served by `./app/verticles/vert3/MyJavaScriptVerticle3.js`)
 
 # Notes:
 
