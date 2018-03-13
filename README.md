@@ -13,6 +13,13 @@ This gives us a really powerful build system, multi-language dependency mamageme
 
 Check out the `app` folder and the `app/MyJavaScriptVerticle.js` entry verticle, and... Get Started Right Now!!
 
+### Vertx CLI Docker alternative
+
+See: 
+https://github.com/DigitalState/camunda-worker-vertx/tree/master/worker for an example of a Docker based Vertx CLI example of the same poject.  This does not use Gradle and is more pure Vetx + Vertx Stack Manager + Docker.  
+See:
+https://github.com/DigitalState/camunda-worker-vertx/tree/feature-ruby-rubygems-stackmanager/worker for a Ruby variation that downloads the Gems through the Dockerfile from RubyGems.
+
 
 # Quickstart
 
